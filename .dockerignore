@@ -1,0 +1,44 @@
+# Dependencies
+node_modules
+*/node_modules
+*/*/node_modules
+.pnpm-store
+
+# Environment files & secrets
+.env
+.env.*
+!.env.example
+
+# Build outputs
+dist
+build
+.next
+out
+.turbo
+*.tsbuildinfo
+
+# Python artifacts
+__pycache__
+*.pyc
+.venv
+venv
+.pytest_cache
+
+# Database & Cache runtime data
+postgres_data
+redis_data
+*.sqlite
+*.db
+
+# Logs
+logs
+*.log
+
+# Git & IDE
+.git
+.github
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+

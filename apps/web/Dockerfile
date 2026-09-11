@@ -1,0 +1,31 @@
+FROM node:22-alpine AS builder
+
+WORKDIR /app
+RUN npm install -g pnpm@12.3.4
+
+COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml turbo.json ./
+COPY packages/config ./packages/config
+COPY packages/types ./packages/types
+COPY apps/web ./apps/web
+
+RUN pnpm install --frozen-lockfile=false
+RUN pnpm --filter=@aegisops/types build
+RUN pnpm --filter=@aegisops/web build
+
+FROM node:22-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+RUN npm install -g pnpm@12.3.4
+
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/pnpm-workspace.yaml ./pnpm-workspace.yaml
+COPY --from=builder /app/packages ./packages
+COPY --from=builder /app/apps/web/package.json ./apps/web/package.json
+COPY --from=builder /app/apps/web/.next ./apps/web/.next
+COPY --from=builder /app/apps/web/public ./apps/web/public
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/apps/web/node_modules ./apps/web/node_modules
+
+EXPOSE 3000
+CMD ["pnpm", "--filter=@aegisops/web", "start"]

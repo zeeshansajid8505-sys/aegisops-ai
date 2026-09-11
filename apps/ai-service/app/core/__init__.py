@@ -1,0 +1,1 @@
+"""AegisOps AI Core Configuration."""

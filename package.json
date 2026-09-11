@@ -1,0 +1,29 @@
+{
+  "name": "aegisops-ai-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AegisOps AI - AI-Powered Incident Management, Observability and SRE Platform",
+  "packageManager": "pnpm@12.3.4",
+  "scripts": {
+    "dev": "pnpm --parallel -r run dev",
+    "dev:api": "pnpm --filter=@aegisops/api dev",
+    "dev:web": "pnpm --filter=@aegisops/web dev",
+    "dev:worker": "pnpm --filter=@aegisops/worker dev",
+    "build": "pnpm -r run build",
+    "lint": "pnpm -r run lint",
+    "typecheck": "pnpm -r run typecheck",
+    "test": "pnpm -r run test",
+    "test:e2e": "pnpm --filter=@aegisops/web test:e2e",
+    "db:generate": "pnpm --filter=@aegisops/api db:generate",
+    "db:validate": "pnpm --filter=@aegisops/api db:validate",
+    "demo:seed": "node apps/api/prisma/seed-demo-data.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "multer": ">=2.3.0"
+    }
+  }
+}

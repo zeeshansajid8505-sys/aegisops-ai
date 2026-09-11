@@ -1,0 +1,28 @@
+{
+  "name": "@aegisops/worker",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "test": "jest --forceExit"
+  },
+  "dependencies": {
+    "@aegisops/types": "workspace:*",
+    "@grpc/grpc-js": "^1.12.6",
+    "@prisma/client": "^5.22.0",
+    "bullmq": "^5.41.0",
+    "ioredis": "^5.4.2"
+  },
+  "devDependencies": {
+    "@aegisops/config": "workspace:*",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20.14.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.8.2"
+  }
+}

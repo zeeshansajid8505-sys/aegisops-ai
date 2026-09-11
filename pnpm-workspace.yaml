@@ -1,0 +1,21 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+
+allowBuilds:
+  '@nestjs/core': true
+  '@prisma/client': true
+  '@prisma/engines': true
+  argon2: true
+  msgpackr-extract: true
+  prisma: true
+  protobufjs: true
+
+overrides:
+  multer: '>=2.3.0'
+  postcss: '>=8.5.18'
+  js-yaml: '>=4.3.2'
+  picomatch: '>=4.0.2'
+  lodash: '>=4.18.1'
+  tmp: '>=0.2.6'
+  glob: '>=12.0.0'
